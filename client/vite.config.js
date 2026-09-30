@@ -11,9 +11,10 @@ export default defineConfig({
 
   server: {
     port: 3000,
+    // this proxy is only used if ur VITE_APP_BASE_URL in .env is empty
     proxy: {
       "/api": {
-        target: "http://localhost:8800",
+        target: "http://merntest-server-container:8800",
         changeOrigin: true
       },
     }
