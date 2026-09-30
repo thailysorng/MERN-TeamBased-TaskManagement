@@ -11,7 +11,7 @@ import { BGS, formatDate, PRIORITYSTYLES, TASK_TYPE } from "../utils";
 import TaskDialog from "./task/TaskDialog";
 import { BiMessageAltDetail } from "react-icons/bi";
 import { FaList } from "react-icons/fa";
-import UserInfo from "./Userinfo";
+import UserInfo from "./UserInfo";
 import { IoMdAdd } from "react-icons/io";
 import AddSubTask from "./task/AddSubTask";
 

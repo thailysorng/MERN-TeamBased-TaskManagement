@@ -11,7 +11,7 @@ import {
 } from "react-icons/md";
 import Chart from "../components/Chart";
 import Loading from "../components/Loader";
-import UserInfo from "../components/Userinfo";
+import UserInfo from "../components/UserInfo";
 import { useGetDashboardStatsQuery } from "../redux/slices/api/taskApiSlice";
 import { BGS, getInitials, PRIORITYSTYLES, TASK_TYPE } from "../utils";
 

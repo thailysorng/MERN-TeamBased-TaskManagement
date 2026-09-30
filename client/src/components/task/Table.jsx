@@ -11,7 +11,7 @@ import clsx from "clsx";
 import { BGS, formatDate, PRIORITYSTYLES, TASK_TYPE } from "../../utils";
 import { FaList } from "react-icons/fa";
 import Button from "../Button";
-import UserInfo from "../Userinfo";
+import UserInfo from "../UserInfo";
 import ConfirmationDialog from "../Dialogs";
 import { useTrashTastMutation } from "../../redux/slices/api/taskApiSlice";
 import AddTask from "./AddTask";
