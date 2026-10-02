@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { summary, user } from "../assets/data";
 import Button from "../components/Button";
 import { IoAdd } from "react-icons/io5";
 import { getInitials } from "../utils";

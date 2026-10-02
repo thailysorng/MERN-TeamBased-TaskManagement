@@ -9,7 +9,6 @@ import {
   Transition,
 } from "@headlessui/react";
 import { Fragment } from "react";
-import { summary } from "../../assets/data";
 import { BsChevronExpand } from "react-icons/bs";
 import clsx from "clsx";
 import { getInitials } from "../../utils";
