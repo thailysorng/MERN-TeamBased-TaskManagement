@@ -90,18 +90,6 @@ const AddUser = ({ open, setOpen, userData }) => {
             })}
             error={errors.email ? errors.email.message : ""}
           />
-
-          <Textbox
-            placeholder="Role"
-            type="text"
-            name="role"
-            label="Role"
-            className="w-full rounded"
-            register={register("role", {
-              required: "User role is required!",
-            })}
-            error={errors.role ? errors.role.message : ""}
-          />
         </div>
 
         {isLoading || isUpdating ? (

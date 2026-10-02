@@ -122,7 +122,7 @@ export const dashboardStatistics = async (req, res) => {
         })
           .populate({
             path: "team",
-            select: "name role title emmail",
+            select: "name title email",
           })
           .sort({ _id: -1 })
       : await Task.find({
@@ -131,12 +131,12 @@ export const dashboardStatistics = async (req, res) => {
         })
           .populate({
             path: "team",
-            select: "name role title emmail",
+            select: "name title email",
           })
           .sort({ _id: -1 });
 
     const users = await User.find({ isActive: true })
-      .select("name title role isAdmin createdAt isActive")
+      .select("name title isAdmin createdAt isActive")
       .limit(10)
       .sort({ _id: -1 });
 
@@ -215,7 +215,7 @@ export const getTask = async (req, res) => {
     const task = await Task.findById(id)
       .populate({
         path: "team",
-        select: "name title role email",
+        select: "name title email",
       })
       .populate({
         path: "activities.by",

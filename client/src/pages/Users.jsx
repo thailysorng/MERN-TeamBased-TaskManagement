@@ -77,7 +77,6 @@ const Users = () => {
         <th className="py-2">Full Name</th>
         <th className="py-2">Title</th>
         <th className="py-2 line-clamp-1">Email</th>
-        <th className="py-2">Role</th>
         <th className="py-2">Active</th>
       </tr>
     </thead>
@@ -96,7 +95,6 @@ const Users = () => {
       </td>
       <td className="p-2">{user.title} </td>
       <td className="p-2">{user.email || "user@email.com"} </td>
-      <td className="p-2">{user.role} </td>
       <td>
         <button
           onClick={() => userStatusClick(user)}
