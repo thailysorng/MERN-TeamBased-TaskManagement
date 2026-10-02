@@ -1,15 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Navigate, useNavigate } from "react-router-dom";
 import Textbox from "../components/Textbox";
 import Button from "../components/Button";
-import { useLoginMutation } from "../redux/slices/api/authApiSlice";
+import { useLoginMutation, useRegisterMutation } from "../redux/slices/api/authApiSlice";
 import { toast } from "sonner";
 import { useDispatch, useSelector } from "react-redux";
 import { setCredentials } from "../redux/slices/authSlice";
 import Loading from "../components/Loader";
 
 const Login = () => {
+  const [isRegister, setIsRegister] = useState(false);
   const { user } = useSelector((state) => state.auth);
   const {
     register,
@@ -20,13 +21,20 @@ const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [login, { isLoading }] = useLoginMutation();
+  const [registerApi, { isLoading: isRegistering }] = useRegisterMutation();
 
   const submitHandler = async (data) => {
     try {
-      const result = await login(data).unwrap();
-
-      dispatch(setCredentials(result));
-      navigate("/");
+      if (isRegister) {
+        const result = await registerApi(data).unwrap();
+        toast.success("User registered successfully");
+        dispatch(setCredentials(result));
+        navigate("/");
+      } else {
+        const result = await login(data).unwrap();
+        dispatch(setCredentials(result));
+        navigate("/");
+      }
 
     } catch (error) {
       console.log(error);
@@ -66,14 +74,28 @@ const Login = () => {
           >
             <div className="">
               <p className="text-blue-600 text-3xl font-bold text-center">
-                Welcome back!
+                {isRegister ? "Create Account!" : "Welcome back!"}
               </p>
               <p className="text-center text-base text-gray-700 ">
-                Keep all your credential safge.
+                {isRegister ? "Please enter your details." : "Keep all your credential safe."}
               </p>
             </div>
 
             <div className="flex flex-col gap-y-5">
+              {isRegister && (
+                <Textbox
+                  placeholder="Full name"
+                  type="text"
+                  name="name"
+                  label="Full Name"
+                  className="w-full rounded-full"
+                  register={register("name", {
+                    required: "Full Name is required!",
+                  })}
+                  error={errors.name ? errors.name.message : ""}
+                />
+              )}
+
               <Textbox
                 placeholder="email@example.com"
                 type="email"
@@ -86,7 +108,7 @@ const Login = () => {
                 error={errors.email ? errors.email.message : ""}
               />
               <Textbox
-                placeholder="You password"
+                placeholder="Your password"
                 type="password"
                 name="password"
                 label="Password"
@@ -94,20 +116,28 @@ const Login = () => {
                 register={register("password", {
                   required: "Password is required!",
                 })}
-                error={errors.email ? errors.email.message : ""}
+                error={errors.password ? errors.password.message : ""}
               />
 
-              <span className="text-sm text-gray-500 hover:text-blue-600 hover:underline cursor-pointer">
-                Forget Password?
-              </span>
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-gray-500 hover:text-blue-600 hover:underline cursor-pointer">
+                  Forget Password?
+                </span>
+                <span
+                  onClick={() => setIsRegister(!isRegister)}
+                  className="text-sm text-gray-500 hover:text-blue-600 hover:underline cursor-pointer"
+                >
+                  {isRegister ? "Already have an account?" : "Register"}
+                </span>
+              </div>
 
-              { isLoading ? (
+              {isLoading || isRegistering ? (
                 <Loading />
               ) : (
                 <Button
                   type="submit"
-                  label="Submit"
-                  className="w-full h-10 bg-blue-700 text-white rounded-full"
+                  label={isRegister ? "Register" : "Submit"}
+                  className="w-full h-10 bg-blue-600 text-white rounded-full hover:bg-blue-700 hover:cursor-pointer"
                 />
               )}
             </div>
