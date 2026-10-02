@@ -9,10 +9,8 @@ import {
 } from "react-icons/md";
 import Title from "../components/Title";
 import Button from "../components/Button";
-import { tasks } from "../assets/data";
 import { PRIORITYSTYLES, TASK_TYPE } from "../utils";
 import ConfirmationDialog from "../components/Dialogs";
-import AddUser from "../components/AddUser";
 import {
   useDeleteRestoreTastMutation,
   useGetAllTaskQuery,
