@@ -210,13 +210,13 @@ const AddTask = ({ open, setOpen, task }) => {
               <Button
                 label="Submit"
                 type="submit"
-                className="bg-blue-600 text-sm font-semibold text-white hover:bg-blue-700 sm:w-auto"
+                className="bg-blue-600 text-sm font-semibold text-white hover:bg-blue-700 sm:w-auto hover:cursor-pointer hover:bg-blue-500 rounded"
               />
             )}
 
             <Button
               type="button"
-              className="bg-white px-5 text-sm font-semibold text-gray-900 sm:w-auto"
+              className="bg-white px-5 text-sm font-semibold text-gray-900 sm:w-auto hover:cursor-pointer hover:bg-gray-100 rounded"
               onClick={() => setOpen(false)}
               label="Cancel"
             />

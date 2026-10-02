@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import {
   MdAttachFile,
   MdKeyboardArrowDown,
+  MdKeyboardDoubleArrowDown,
   MdKeyboardArrowUp,
   MdKeyboardDoubleArrowUp,
 } from "react-icons/md";
@@ -18,7 +19,8 @@ import AddSubTask from "./task/AddSubTask";
 const ICONS = {
   high: <MdKeyboardDoubleArrowUp />,
   medium: <MdKeyboardArrowUp />,
-  low: <MdKeyboardArrowDown />,
+  low: <MdKeyboardDoubleArrowDown />,
+  normal: <MdKeyboardArrowDown />,  
 };
 
 const TaskCard = ({ task }) => {
@@ -116,7 +118,7 @@ const TaskCard = ({ task }) => {
           <div className="w-full pb-2">
             <button
               onClick={() => setOpenSubTask(true)}
-              className="w-full flex gap-4 items-center text-sm text-gray-500 font-semibold"
+              className="w-wrap flex gap-4 items-center text-sm text-gray-500 font-semibold hover:cursor-pointer"
             >
               <IoMdAdd className="text-lg" />
               <span>ADD SUBTASK</span>

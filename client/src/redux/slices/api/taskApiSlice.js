@@ -17,6 +17,7 @@ export const taskApislice = apiSlice.injectEndpoints({
         method: "GET",
         credentials: "include",
       }),
+      providesTags: ["Task"],
     }),
 
     createTask: builder.mutation({
@@ -26,6 +27,7 @@ export const taskApislice = apiSlice.injectEndpoints({
         body: data,
         credentials: "include",
       }),
+      invalidatesTags: ["Task"],
     }),
 
     duplicateTask: builder.mutation({

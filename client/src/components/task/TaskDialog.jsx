@@ -88,7 +88,7 @@ const TaskDialog = ({ task }) => {
   return (
     <>
       <Menu as="div" className="relative inline-block text-left">
-        <MenuButton className="inline-flex w-full justify-center px-4 py-2 text-gray-600">
+        <MenuButton className="inline-flex w-full justify-center px-4 py-2 text-gray-600 hover:bg-gray-100 hover:text-gray-900 hover:cursor-pointer rounded-md">
           <BsThreeDots />
         </MenuButton>
 
@@ -101,7 +101,7 @@ const TaskDialog = ({ task }) => {
                     disabled={!el.allowed}
                     onClick={el.onClick}
                     className={`${
-                      active ? "bg-blue-500 text-white" : "text-gray-900"
+                      active ? "bg-blue-500 text-white hover:cursor-pointer" : "text-gray-900"
                     } flex w-full items-center rounded-md px-2 py-2 text-sm disabled:text-gray-400`}
                   >
                     {el.icon}
@@ -117,7 +117,7 @@ const TaskDialog = ({ task }) => {
                   disabled={!isAdmin}
                   onClick={() => setOpenDialog(true)}
                   className={`${
-                    active ? "bg-red-100 text-red-900" : "text-red-900"
+                    active ? "bg-red-100 text-red-900 hover:cursor-pointer" : "text-red-900"
                   } flex w-full items-center rounded-md px-2 py-2 text-sm disabled:text-gray-400`}
                 >
                   <RiDeleteBin6Line className="mr-2 h-5 w-5" />
